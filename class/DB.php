@@ -6,7 +6,7 @@ use mysqli;
 
 class DB
 {
-    private string $dbName = 'ia_section_journaling';
+    private string $dbName = 'bis_section_ia';
     private string $password = '';
     private string $userName = 'root';
     private string $host = 'localhost';
