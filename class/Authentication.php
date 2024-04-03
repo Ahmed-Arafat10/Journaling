@@ -46,7 +46,7 @@ class Authentication
             if ($result->num_rows == 1) {
                 $data = $result->fetch_assoc();
                 if (password_verify($password, $data['Password'])) {
-                    \App\Alert::PrintMessage("Welcome Back, " . $data['Name'], "Danger");
+                    \App\Alert::PrintMessage("Welcome Back, " . $data['Name'], "Normal");
                 } else {
                     \App\Alert::PrintMessage("Password Is Incorrect", "Danger");
                 }
