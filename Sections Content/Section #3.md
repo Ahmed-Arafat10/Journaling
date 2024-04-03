@@ -13,5 +13,5 @@
 12. How to insert a new record in DB
     - Raw SQL insert statement
     - `prepare()`
-    - `bind_para()`
+    - `bind_param()`
     - `execute()`
