@@ -1,3 +1,4 @@
+### Section 5:
 #### Practicing Time
 1. Create folder called `IA2` in `htdocs`
 2. Copy assets folder from `IA` {our main project folder} to our new folder `IA2` {The only folder to COPY}

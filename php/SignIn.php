@@ -5,8 +5,16 @@ require('../vendor/autoload.php'); # IMPORT
 $myAlert = new \App\Alert();
 $myAlert->alertAfterSignUp();
 
+
 $myAuth = new \App\Authentication();
+
+$myAuth->redirectIfAuth();
+
+
 $myAuth->logIn();
+
+
+
 ?>
 
 <!DOCTYPE html>

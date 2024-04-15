@@ -20,15 +20,15 @@
             <li class="nav-item ">
                 <a class="nav-link" href="AddQuestions.php">Add Questions</a>
             </li>
-<!--            --><?php //if (!isset($_SESSION['UserID'])) : ?>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="Login.php">Login</a>-->
-<!--                </li>-->
-<!--            --><?php //else : ?>
-<!--                <li style="width:15%;" class="nav-item">-->
-<!--                    <a id="Logout" class="nav-link" href="index.php?LogOut=1">Logout</a>-->
-<!--                </li>-->
-<!--            --><?php //endif ?>
+            <?php if ((new \App\Authentication())->is_auth()): ?>
+                <li class="nav-item ">
+                    <a style="color: red" class="nav-link" href="?logout=1">LogOut</a>
+                </li>
+            <?php else: ?>
+                <li class="nav-item ">
+                    <a style="color: green" class="nav-link" href="SignIn.php">Sign In</a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>

@@ -4,7 +4,41 @@ namespace App;
 
 class Authentication
 {
-    public function signUp(){
+    // used to allow access to some pages ONLY when the user is authenticated
+    public function auth()
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: SignIn.php');
+        }
+    }
+
+    // return true or false
+    public function is_auth()
+    {
+        return isset($_SESSION['user_id']);
+    }
+
+    public function logOut()
+    {
+        // check if key ?logout= exists in URL
+        if (isset($_GET['logout'])) {
+            session_unset();
+            session_destroy();
+            header('Location: SignIn.php');
+        }
+    }
+
+    // used to prevent access of SignUp.php & SignUp.php pages when user is authenticated
+    public function redirectIfAuth()
+    {
+        if (isset($_SESSION['user_id'])) {
+            $_SESSION['alert_already_auth'] = 1;
+            header('Location: index.php');
+        }
+    }
+
+    public function signUp()
+    {
         $myDB = new \App\DB();
         $myDB->connect();
         if (isset($_POST['signUpBtn'])) {
@@ -30,7 +64,8 @@ class Authentication
         }
     }
 
-    public function logIn(){
+    public function logIn()
+    {
         if (isset($_POST['logInBtn'])) {
             $myDb = new \App\DB();
             $myDb->connect();
@@ -47,6 +82,9 @@ class Authentication
                 $data = $result->fetch_assoc();
                 if (password_verify($password, $data['Password'])) {
                     \App\Alert::PrintMessage("Welcome Back, " . $data['Name'], "Normal");
+                    $_SESSION['user_id'] = $data['ID'];
+                    $_SESSION['Name'] = $data['Name'];
+                    header('Location: index.php');
                 } else {
                     \App\Alert::PrintMessage("Password Is Incorrect", "Danger");
                 }

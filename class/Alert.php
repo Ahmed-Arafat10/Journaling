@@ -18,4 +18,12 @@ class Alert
             \App\Alert::PrintMessage("Done", "Normal");
         }
     }
+
+    public function alertIfUserAuth()
+    {
+        if (isset($_SESSION['alert_already_auth'])) {
+            \App\Alert::PrintMessage("Already Authenticated !!!", "Normal");
+            unset($_SESSION['alert_already_auth']);
+        }
+    }
 }

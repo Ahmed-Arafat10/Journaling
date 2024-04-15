@@ -3,6 +3,9 @@
 require('../vendor/autoload.php'); # IMPORT
 
 $myObj = new \App\Authentication();
+
+$myObj->redirectIfAuth();
+
 $myObj->signUp();
 
 ?>
