@@ -9,10 +9,10 @@
         <ul class="navbar-nav">
 
             <li class="nav-item">
-                <a class="nav-link" href="TodayList.php">Today's List</a>
+                <a class="nav-link" href="TaskView.php">Today's Tasks</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="AddData.php">Add Data</a>
+                <a class="nav-link" href="TaskAdd.php">Add Task</a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="History.php">History</a>

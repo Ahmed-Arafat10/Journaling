@@ -181,6 +181,6 @@ table, input {
     margin-right: auto;
 }
 
-table, tr, th, td, tbody {
-    border-radius: 20px;
-}
+/*table, tr, th, td, tbody {*/
+/*    border-radius: 20px;*/
+/*}*/
