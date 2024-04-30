@@ -10,7 +10,9 @@ $myAlert->alertIfUserAuth();
 
 $myDate = new \App\Date();
 $myDate->storeTodaysDateIfNeeded();
-var_dump($_SESSION);
+
+#var_dump($_SESSION);
+
 ?>
 
 <!doctype html>
@@ -32,7 +34,7 @@ var_dump($_SESSION);
 <?php require($_SERVER['DOCUMENT_ROOT'] . '/IA/php/Layout/Navbar.php') ?>
 
 
-
+<h1>Welcome Back <?php echo $_SESSION['Name']?> To Our Journaling Website</h1>
 
 </body>
 </html>

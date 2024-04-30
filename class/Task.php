@@ -5,7 +5,6 @@ namespace App;
 class Task
 {
     # CRUD Operations
-
     public function create()
     {
         if (isset($_POST['addNewTaskBtn'])) {
@@ -28,11 +27,10 @@ class Task
     {
         $myDb = new DB();
         $myDb->connect();
-        $select = "SELECT * FROM `to-do-list` WHERE `User_ID` = ? AND `Date_ID` = ?";
+        $select = "SELECT * FROM `to-do-list` WHERE `User_ID` = ? AND `Date_ID` = ? ORDER BY Is_Done";
         $q = $myDb->Con->prepare($select);
         $q->bind_param('ii', $_SESSION['user_id'], $_SESSION['date_id']);
         $q->execute();
-        $result = $q->get_result();
-        return $result;
+        return $q->get_result();
     }
 }

@@ -12,14 +12,14 @@
                 <a class="nav-link" href="TaskView.php">Today's Tasks</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="TaskAdd.php">Add Task</a>
+                <a class="nav-link" href="TaskInsert.php">Add Task</a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="History.php">History</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="AddQuestions.php">Add Questions</a>
-            </li>
+<!--            <li class="nav-item ">-->
+<!--                <a class="nav-link" href="History.php">History</a>-->
+<!--            </li>-->
+<!--            <li class="nav-item ">-->
+<!--                <a class="nav-link" href="AddQuestions.php">Add Questions</a>-->
+<!--            </li>-->
             <?php if ((new \App\Authentication())->is_auth()): ?>
                 <li class="nav-item ">
                     <a style="color: red" class="nav-link" href="?logout=1">LogOut</a>

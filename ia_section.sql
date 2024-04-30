@@ -61,7 +61,7 @@ CREATE TABLE `diary` (
 CREATE TABLE `to-do-list` (
   `ID` int(11) NOT NULL,
   `Date_ID` int(11) NOT NULL,
-  `Note` text NOT NULL,
+  `Task` text NOT NULL,
   `Is_Done` bit(1) NOT NULL,
   `User_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -70,7 +70,7 @@ CREATE TABLE `to-do-list` (
 -- Dumping data for table `to-do-list`
 --
 
-INSERT INTO `to-do-list` (`ID`, `Date_ID`, `Note`, `Is_Done`, `User_ID`) VALUES
+INSERT INTO `to-do-list` (`ID`, `Date_ID`, `Task`, `Is_Done`, `User_ID`) VALUES
 (2, 1, 'Hello BIS', b'0', 27),
 (3, 1, 'xyz', b'0', 27);
 
@@ -93,7 +93,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`ID`, `Name`, `Password`, `Email`) VALUES
 (26, 'AHMED', '$2y$10$v3TK509OaKo8TIiFas9Bn.A2ZvgAYjwXUk6H3iXXhd5Ro7qw2xiim', 'ahmed@gmail.com'),
-(27, 'ahmed_arafat', '$2y$10$w.2HEDZ5aWgMgAM.a0RGzuW15YKcgSI1XzF3JdzLWmaBEOjsXbBSu', 'admin1@admin.com'),
+(27, 'ahmed_arafat', '$2y$10$w.2HEDZ5aWgMgAM.a0RGzuW15YKcgSI1XzF3JdzLWmaBEOjsXbBSu', 'admin@admin.com'),
 (28, 'Marwa', '$2y$10$HlxEwEdgaOS0x7JXEOqLIuv8kSZq3MIqLOUiikrvZ4AVdtWmLhQ3a', 'marwa@gmail.com');
 
 --
