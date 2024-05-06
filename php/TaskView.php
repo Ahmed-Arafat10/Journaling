@@ -69,7 +69,7 @@ $tasks = $task->select();
                     </td>
                 <?php endif ?>
                 <td>
-                    <a href="">
+                    <a href="TaskUpdate.php?task_id=<?php echo $task['ID']?>">
                         <button class="btn btn-warning text-center">Edit</button>
                     </a>
                 </td>

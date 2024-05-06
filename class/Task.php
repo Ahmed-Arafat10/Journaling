@@ -33,4 +33,33 @@ class Task
         $q->execute();
         return $q->get_result();
     }
+
+    public function getTaskById()
+    {
+        if (!isset($_GET['task_id'])) {
+            Alert::PrintMessage("Cannot Access This Page", "Danger");
+            exit();
+        }
+        $myDb = new DB();
+        $myDb->connect();
+        $select = "SELECT * FROM `to-do-list` WHERE `ID`= ?";
+        $q = $myDb->Con->prepare($select);
+        $q->bind_param('i', $_GET['task_id']);
+        $q->execute();
+        return $q->get_result()->fetch_assoc();
+    }
+
+    public function update()
+    {
+        if(isset($_POST['updateTaskBtn'])){
+            $myDb = new DB();
+            $myDb->connect();
+            $task = $_POST['task_input'];
+            $select = "UPDATE `to-do-list` SET `Task` = ? WHERE `ID`= ?";
+            $q = $myDb->Con->prepare($select);
+            $q->bind_param('si', $task,$_GET['task_id']);
+            $q->execute();
+            header('Location: TaskView.php');
+        }
+    }
 }

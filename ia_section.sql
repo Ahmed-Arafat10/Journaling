@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2024 at 03:47 PM
+-- Generation Time: May 07, 2024 at 12:27 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,7 +37,10 @@ CREATE TABLE `date` (
 --
 
 INSERT INTO `date` (`ID`, `Date`) VALUES
-(1, '2024-04-01');
+(1, '2024-04-01'),
+(6, '2024-04-29'),
+(10, '2024-04-30'),
+(11, '2024-05-07');
 
 -- --------------------------------------------------------
 
@@ -71,8 +74,10 @@ CREATE TABLE `to-do-list` (
 --
 
 INSERT INTO `to-do-list` (`ID`, `Date_ID`, `Task`, `Is_Done`, `User_ID`) VALUES
-(2, 1, 'Hello BIS', b'0', 27),
-(3, 1, 'xyz', b'0', 27);
+(2, 10, 'Hello BIS', b'1', 27),
+(3, 10, 'XYZ', b'0', 27),
+(8, 10, 'BIS', b'1', 27),
+(9, 11, 'Hello BISs', b'0', 27);
 
 -- --------------------------------------------------------
 
@@ -93,7 +98,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`ID`, `Name`, `Password`, `Email`) VALUES
 (26, 'AHMED', '$2y$10$v3TK509OaKo8TIiFas9Bn.A2ZvgAYjwXUk6H3iXXhd5Ro7qw2xiim', 'ahmed@gmail.com'),
-(27, 'ahmed_arafat', '$2y$10$w.2HEDZ5aWgMgAM.a0RGzuW15YKcgSI1XzF3JdzLWmaBEOjsXbBSu', 'admin@admin.com'),
+(27, 'ahmed_arafat', '$2y$10$w.2HEDZ5aWgMgAM.a0RGzuW15YKcgSI1XzF3JdzLWmaBEOjsXbBSu', 'admin1@admin.com'),
 (28, 'Marwa', '$2y$10$HlxEwEdgaOS0x7JXEOqLIuv8kSZq3MIqLOUiikrvZ4AVdtWmLhQ3a', 'marwa@gmail.com');
 
 --
@@ -137,7 +142,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `date`
 --
 ALTER TABLE `date`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `diary`
@@ -149,7 +154,7 @@ ALTER TABLE `diary`
 -- AUTO_INCREMENT for table `to-do-list`
 --
 ALTER TABLE `to-do-list`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
