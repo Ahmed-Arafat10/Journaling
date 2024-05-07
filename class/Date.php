@@ -14,24 +14,29 @@ class Date
         $selectQuery = "SELECT * FROM `date` WHERE `Date` = ? ";
         $stmt = $myDb->Con->prepare($selectQuery);
         $stmt->bind_param('s', $curDate);
-        $check = $stmt->execute();
+        $stmt->execute();
+        $result = $stmt->get_result();
         //If today's date does not exist in `Date` Table, THEN insert it in Table
-        if (!$stmt->get_result()->num_rows) {
+        if ($result->num_rows == 0) {
             $insertQuery = "INSERT INTO `Date` VALUES(NULL,?)";
             $insertStmt = $myDb->Con->prepare($insertQuery);
             $insertStmt->bind_param('s', $curDate);
             $insertStmt->execute();
+
+            // SELECT Today's Date row to be able to store it's ID in $day_id variable after fetching row
+            $selectQuery = "SELECT * FROM `date` WHERE Date = ? ";
+            $stmt = $myDb->Con->prepare($selectQuery);
+            $stmt->bind_param('s', $curDate);
+            $stmt->execute();
+            $day_id = $stmt->get_result()->fetch_assoc()['ID'];
+
+            $_SESSION['date_id'] = $day_id; # VIP: To Make Today's Date ID Global among ALL Pages
+            $_SESSION['date'] = $curDate;
+        } else {
+            $day_id = $result->fetch_assoc()['ID'];
+            $_SESSION['date_id'] = $day_id; # VIP: To Make Today's Date ID Global among ALL Pages
+            $_SESSION['date'] = $curDate;
         }
-        // SELECT Today's Date row to be able to store it's ID in $Day_ID variable after fetching row
-        $selectQuery = "SELECT * FROM `date` WHERE Date = ? ";
-        $stmt = $myDb->Con->prepare($selectQuery);
-        $stmt->bind_param('s', $curDate);
 
-        $stmt->execute();
-        $Day_ID = $stmt->get_result()->fetch_assoc()['ID'];
-
-        $_SESSION['date_id'] = $Day_ID; # VIP: To Make Today's Date ID Global among ALL Pages
-        $_SESSION['date'] = $curDate;
-        //echo "Today's ID is : " . $Day_ID;# Debug
     }
 }
