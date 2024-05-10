@@ -6,6 +6,12 @@ $myAuth->auth();
 $myAuth->logOut();
 
 #var_dump($_SESSION);
+
+$myTask = new \App\Task();
+
+$myTask->delete();
+
+$myTask->updateTaskStatus();
 ?>
 
 <!doctype html>
@@ -15,7 +21,7 @@ $myAuth->logOut();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="\viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/index.css?v=<?php echo time()?>">
+    <link rel="stylesheet" href="../assets/css/index.css?v=<?php echo time() ?>">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -57,24 +63,24 @@ $tasks = $task->select();
                 <?php endif ?>
                 <?php if ($task['Is_Done'] == '1') : ?>
                     <td>
-                        <a href="">
+                        <a href="?task_status=<?php echo $task['ID'] ?>&status=0">
                             <button class="btn btn-info text-center">Undone</button>
                         </a>
                     </td>
                 <?php else : ?>
                     <td>
-                        <a href="">
+                        <a href="?task_status=<?php echo $task['ID'] ?>&status=1">
                             <button class="btn btn-primary text-center">Done</button>
                         </a>
                     </td>
                 <?php endif ?>
                 <td>
-                    <a href="TaskUpdate.php?task_id=<?php echo $task['ID']?>">
+                    <a href="TaskUpdate.php?task_id=<?php echo $task['ID'] ?>">
                         <button class="btn btn-warning text-center">Edit</button>
                     </a>
                 </td>
                 <td>
-                    <a href="">
+                    <a href="?task_delete=<?php echo $task['ID'] ?>">
                         <button class="btn btn-danger text-center">Delete</button>
                     </a>
                 </td>
